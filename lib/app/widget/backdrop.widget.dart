@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_2025/app/model/product.dart';
 
 class _FrontLayer extends StatelessWidget {
-  const _FrontLayer({super.key, required this.child});
+  const _FrontLayer({required this.child});
   final Widget child;
 
   @override
