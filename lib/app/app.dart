@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_2025/app/blocs/report.bloc.dart';
 import 'package:flutter_advanced_2025/app/constant/color.constant.dart';
 import 'package:flutter_advanced_2025/app/model/product.dart';
 import 'package:flutter_advanced_2025/app/supplemental/cut_corners_border.dart';
+import 'package:flutter_advanced_2025/app/view/report.page.dart';
 import 'package:flutter_advanced_2025/app/widget/backdrop.widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'view/home.dart';
 import 'view/login.dart';
@@ -65,21 +68,25 @@ class ShrineApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Shrine',
-      initialRoute: '/login',
-      routes: {
-        '/login': (BuildContext context) => const LoginPage(),
-        '/': (BuildContext context) => Backdrop(
-          frontLayer: HomePage(), 
-          backLayer: Container(color: kShrinePink100,), 
-          frontTitle: Text('Shrine'), 
-          backTitle: Text('Menu'), 
-          currentCategory: Category.all
-        )
-        // '/': (BuildContext context) => const HomePage(),
-      },
-      theme: _kShrineTheme
+    return BlocProvider(
+      create: (_) => ReportBloc(),
+      child: MaterialApp(
+        title: 'Shrine',
+        initialRoute: '/report',
+        routes: {
+          '/report': (BuildContext context) => ReportListPage(),
+          '/login': (BuildContext context) => const LoginPage(),
+          '/': (BuildContext context) => Backdrop(
+            frontLayer: HomePage(), 
+            backLayer: Container(color: kShrinePink100,), 
+            frontTitle: Text('Shrine'), 
+            backTitle: Text('Menu'), 
+            currentCategory: Category.all
+          )
+          // '/': (BuildContext context) => const HomePage(),
+        },
+        theme: _kShrineTheme
+      ),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_2025/app/constant/color.constant.dart';
+import 'package:flutter_advanced_2025/app/view/report.page.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -13,7 +15,7 @@ class DrawerWidget extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: [
                 DrawerHeader(
-                  decoration: BoxDecoration(color: Colors.blue),
+                  decoration: BoxDecoration(color: kShrinePink300),
                   child: Text(
                     'Main Menu',
                     style: TextStyle(
@@ -23,11 +25,11 @@ class DrawerWidget extends StatelessWidget {
                     ),
                   ),
                 ),                
-                // MenuItem(
-                //   itemTitle: 'Graph and Chart',
-                //   itemIcon: Icons.star_rate,
-                //   widgetScreen: ChartPage(),
-                // ),
+                MenuItem(
+                  itemTitle: 'Reports',
+                  itemIcon: Icons.document_scanner,
+                  widgetScreen: ReportListPage(),
+                ),
               ],
             ),
           ),
