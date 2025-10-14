@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_2025/app/constant/color.constant.dart';
+import 'package:flutter_advanced_2025/app/model/product.dart';
 import 'package:flutter_advanced_2025/app/supplemental/cut_corners_border.dart';
+import 'package:flutter_advanced_2025/app/widget/backdrop.widget.dart';
 
 import 'view/home.dart';
 import 'view/login.dart';
@@ -31,6 +33,10 @@ ThemeData _buildShrineTheme() {
       floatingLabelStyle: TextStyle(
         color: kShrineBrown900
       ),
+    ),
+    appBarTheme: const AppBarTheme(
+      foregroundColor: kShrineBrown900,
+      backgroundColor: kShrinePink100,
     )
   );
 }
@@ -64,7 +70,14 @@ class ShrineApp extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
-        '/': (BuildContext context) => const HomePage(),
+        '/': (BuildContext context) => Backdrop(
+          frontLayer: HomePage(), 
+          backLayer: Container(color: kShrinePink100,), 
+          frontTitle: Text('Shrine'), 
+          backTitle: Text('Menu'), 
+          currentCategory: Category.all
+        )
+        // '/': (BuildContext context) => const HomePage(),
       },
       theme: _kShrineTheme
     );

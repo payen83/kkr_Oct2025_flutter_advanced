@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_2025/app/supplemental/asymmetric_view.dart';
 import 'package:intl/intl.dart';
 
 import '../model/product.dart';
@@ -64,40 +65,46 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
-          ),
-          onPressed: () {},
-        ),
-        title: const Text('SHRINE'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              semanticLabel: 'search',
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.tune,
-              semanticLabel: 'filter',
-            ),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: const EdgeInsets.all(16.0),
-        childAspectRatio: 8.0 / 9.0,
-        children: _buildGridCards(context),
-      ),
-      resizeToAvoidBottomInset: false,
+    return AsymmetricView(
+      products: ProductsRepository.loadProducts(Category.all)
     );
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     leading: IconButton(
+    //       icon: const Icon(
+    //         Icons.menu,
+    //         semanticLabel: 'menu',
+    //       ),
+    //       onPressed: () {},
+    //     ),
+    //     title: const Text('SHRINE'),
+    //     actions: <Widget>[
+    //       IconButton(
+    //         icon: const Icon(
+    //           Icons.search,
+    //           semanticLabel: 'search',
+    //         ),
+    //         onPressed: () {},
+    //       ),
+    //       IconButton(
+    //         icon: const Icon(
+    //           Icons.tune,
+    //           semanticLabel: 'filter',
+    //         ),
+    //         onPressed: () {},
+    //       ),
+    //     ],
+    //   ),
+    //   body: AsymmetricView(
+    //     products: ProductsRepository.loadProducts(Category.all)
+    //     ),
+    //   // body: GridView.count(
+    //   //   crossAxisCount: 2,
+    //   //   padding: const EdgeInsets.all(16.0),
+    //   //   childAspectRatio: 8.0 / 9.0,
+    //   //   children: _buildGridCards(context),
+    //   // ),
+    //   resizeToAvoidBottomInset: false,
+    // );
   }
 }
