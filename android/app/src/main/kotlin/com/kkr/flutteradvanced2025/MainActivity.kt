@@ -1,4 +1,4 @@
-package com.example.flutter_advanced_2025
+package com.kkr.flutteradvanced2025
 
 import io.flutter.embedding.android.FlutterActivity
 

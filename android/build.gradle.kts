@@ -5,6 +5,21 @@ allprojects {
     }
 }
 
+buildscript{
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.google.gms:google-services:4.4.2")
+    }
+}
+
+plugins {
+    // Make sure this line exists
+    id("com.google.gms.google-services") version "4.4.1" apply false
+}
+
 val newBuildDir: Directory =
     rootProject.layout.buildDirectory
         .dir("../../build")
