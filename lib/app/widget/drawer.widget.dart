@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_2025/app/constant/color.constant.dart';
+import 'package:flutter_advanced_2025/app/view/chart.page.dart';
 import 'package:flutter_advanced_2025/app/view/report.page.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -29,6 +30,11 @@ class DrawerWidget extends StatelessWidget {
                   itemTitle: 'Reports',
                   itemIcon: Icons.document_scanner,
                   widgetScreen: ReportListPage(),
+                ),
+                MenuItem(
+                  itemTitle: 'Charts and Graphs',
+                  itemIcon: Icons.show_chart_sharp,
+                  widgetScreen: ChartPage(),
                 ),
               ],
             ),
