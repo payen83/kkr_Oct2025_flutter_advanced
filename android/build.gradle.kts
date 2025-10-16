@@ -15,10 +15,10 @@ buildscript{
     }
 }
 
-plugins {
+//plugins {
     // Make sure this line exists
-    id("com.google.gms.google-services") version "4.4.1" apply false
-}
+    //id("com.google.gms.google-services") version "4.4.1" apply false
+//}
 
 val newBuildDir: Directory =
     rootProject.layout.buildDirectory

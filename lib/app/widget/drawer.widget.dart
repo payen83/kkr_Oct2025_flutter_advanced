@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_2025/app/constant/color.constant.dart';
+import 'package:flutter_advanced_2025/app/view/aichat.page.dart';
 import 'package:flutter_advanced_2025/app/view/chart.page.dart';
+import 'package:flutter_advanced_2025/app/view/form.page.dart';
 import 'package:flutter_advanced_2025/app/view/report.page.dart';
 import 'package:flutter_advanced_2025/app/view/webview.page.dart';
 
@@ -41,6 +43,16 @@ class DrawerWidget extends StatelessWidget {
                   itemTitle: 'WebView',
                   itemIcon: Icons.wordpress,
                   widgetScreen: WebviewPage(),
+                ), 
+                MenuItem(
+                  itemTitle: 'AI Chat',
+                  itemIcon: Icons.android,
+                  widgetScreen: AiChatPage(),
+                ),
+                MenuItem(
+                  itemTitle: 'Form & Validation',
+                  itemIcon: Icons.draw,
+                  widgetScreen: FormPage(),
                 ),
               ],
             ),
