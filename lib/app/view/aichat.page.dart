@@ -26,7 +26,7 @@ class _AiChatPageState extends State<AiChatPage> {
 
   Future<void> sendMessage() async {
     final text = chatController.text;
-    if(text.isEmpty) return;
+    if (text.isEmpty) return;
     setState(() {
       messages.add({'sender': 'user', 'message': text});
       messages.add({'sender': 'AI', 'message': '..'});
@@ -39,14 +39,12 @@ class _AiChatPageState extends State<AiChatPage> {
     });
   }
 
-
   // final List<Map<String, String>> messages = [
   //   {"sender": "user", "message": "Hi there!"},
   //   {"sender": "AI", "message": "Hello! How can I help you today?"},
   //   {"sender": "user", "message": "Can you tell me a joke?"},
   //   { "sender": "AI", "message": "Sure! Why don't skeletons fight each other? They don't have the guts."},
   // ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -68,24 +66,32 @@ class _AiChatPageState extends State<AiChatPage> {
                 final msg = messages[index];
                 final isUser = msg['sender'] == 'user';
                 return Align(
-                  alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
+                  alignment: isUser
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
                   child: Container(
                     margin: const EdgeInsets.symmetric(vertical: 4),
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       color: isUser ? Colors.blue : Colors.grey,
-                      borderRadius: BorderRadius.circular(16)
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Text(msg['message'] ?? "", style: TextStyle(color: Colors.white),),
+                    child: Text(
+                      msg['message'] ?? "",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 );
-              }
-            )
+              },
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
-              border: Border(top: BorderSide(color: Colors.grey))
+              border: Border(top: BorderSide(color: Colors.grey)),
             ),
             child: Row(
               children: [
@@ -97,14 +103,14 @@ class _AiChatPageState extends State<AiChatPage> {
                     maxLines: null,
                     decoration: InputDecoration(
                       hintText: "Type your message",
-                      border: InputBorder.none
+                      border: InputBorder.none,
                     ),
-                  )
+                  ),
                 ),
-                IconButton(onPressed: sendMessage, icon: Icon(Icons.send))
+                IconButton(onPressed: sendMessage, icon: Icon(Icons.send)),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

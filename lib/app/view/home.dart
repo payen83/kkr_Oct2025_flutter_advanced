@@ -6,7 +6,9 @@ import '../model/product.dart';
 import '../model/products_repository.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, this.category = Category.all});
+  final Category category;
+
 
   List<Card> _buildGridCards(BuildContext context) {
     List<Product> products = ProductsRepository.loadProducts(Category.all);

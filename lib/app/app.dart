@@ -3,6 +3,7 @@ import 'package:flutter_advanced_2025/app/blocs/report.bloc.dart';
 import 'package:flutter_advanced_2025/app/constant/color.constant.dart';
 import 'package:flutter_advanced_2025/app/model/product.dart';
 import 'package:flutter_advanced_2025/app/supplemental/cut_corners_border.dart';
+import 'package:flutter_advanced_2025/app/view/menu.page.dart';
 import 'package:flutter_advanced_2025/app/view/report.page.dart';
 import 'package:flutter_advanced_2025/app/widget/backdrop.widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,22 +64,35 @@ TextTheme _buildShrineTextTheme(TextTheme base){
   );
 }
 
-class ShrineApp extends StatelessWidget {
+class ShrineApp extends StatefulWidget {
   const ShrineApp({super.key});
 
+  @override
+  State<ShrineApp> createState() => _ShrineAppState();
+}
+
+class _ShrineAppState extends State<ShrineApp> {
+  Category _currentCategory = Category.all;
+
+  void _onCategoryTap(Category category){
+    setState(() {
+      _currentCategory = category;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => ReportBloc(),
       child: MaterialApp(
         title: 'Shrine',
-        initialRoute: '/report',
+        initialRoute: '/',
         routes: {
           '/report': (BuildContext context) => ReportListPage(),
           '/login': (BuildContext context) => const LoginPage(),
           '/': (BuildContext context) => Backdrop(
-            frontLayer: HomePage(), 
-            backLayer: Container(color: kShrinePink100,), 
+            frontLayer: HomePage(category: _currentCategory,), 
+            // backLayer: Container(color: kShrinePink100,), 
+            backLayer: MenuPage(currentCategory: _currentCategory, onCategoryTap: _onCategoryTap),
             frontTitle: Text('Shrine'), 
             backTitle: Text('Menu'), 
             currentCategory: Category.all
